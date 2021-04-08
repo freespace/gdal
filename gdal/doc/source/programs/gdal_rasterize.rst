@@ -211,12 +211,12 @@ file work.tif with the color red (RGB = 255,0,0).
     gdal_rasterize -b 1 -b 2 -b 3 -burn 255 -burn 0 -burn 0 -l mask mask.shp work.tif
 
 
-The following would burn all "class A" buildings into the output elevation
+The following would burn all buildings whose class field has value of "A" into the output elevation
 file, pulling the top elevation from the ROOF_H attribute.
 
 ::
 
-    gdal_rasterize -a ROOF_H -where 'class="A"' -l footprints footprints.shp city_dem.tif
+    gdal_rasterize -a ROOF_H -where "class='A'" -l footprints footprints.shp city_dem.tif
 
 The following would burn all polygons from footprint.shp into a new 1000x1000
 rgb TIFF as the color red.  Note that :option:`-b` is not used; the order of the :option:`-burn`
